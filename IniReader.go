@@ -21,7 +21,8 @@ func NewIniReader(file string) *IniReader {
 		line := strings.Split(lines,"=")
 		if len(line) == 2 {
 			key := strings.TrimSpace(line[0])
-			value := strings.TrimSpace(strings.Split(line[1],"#")[0])
+			valueLine := strings.TrimPrefix(strings.TrimSpace(strings.Replace(lines,key,"",1)),"=")
+			value := strings.TrimSpace(strings.Split(valueLine,"#")[0])
 			items[key] = value
 		}
 	}
