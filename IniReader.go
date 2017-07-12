@@ -19,7 +19,7 @@ func NewIniReader(file string) *IniReader {
 	confArr := strings.Split(string(buf),"\n")
 	for _,lines := range confArr {
 		line := strings.Split(lines,"=")
-		if len(line) == 2 {
+		if len(line) > 1 {
 			key := strings.TrimSpace(line[0])
 			valueLine := strings.TrimPrefix(strings.TrimSpace(strings.Replace(lines,key,"",1)),"=")
 			value := strings.TrimSpace(strings.Split(valueLine,"#")[0])
